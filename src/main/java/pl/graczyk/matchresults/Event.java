@@ -2,6 +2,8 @@ package pl.graczyk.matchresults;
 
 import pl.graczyk.matchresults.Competitor;
 
+import java.util.Arrays;
+
 public class Event {
  private String sport_event_id;
  private String start_date;
@@ -14,6 +16,8 @@ public class Event {
  private  double probability_home_team_winner;
  private double probability_draw;
  private  double probability_away_team_winner;
+
+  double highest_probable_result;
 
 
     public String getSport_event_id() {
@@ -122,7 +126,46 @@ public class Event {
         this.probability_home_team_winner = probabilityHomeTeamWinner;
         this.probability_draw = probabilityDraw;
         this.probability_away_team_winner = probabilityAwayTeamWinner;
+    }
+
+
+public double HighestProbableResult(double probability_home_team_winner,
+                                    double probability_draw,
+                                    double probability_away_team_winner) {
+        double highest_probable_result = Math.max(probability_draw,
+            Math.max(probability_away_team_winner, probability_home_team_winner));
+
+
+        return highest_probable_result; }
+
+    public String HighestProbableResultName() {
+        highest_probable_result = HighestProbableResult(probability_home_team_winner,probability_draw,probability_away_team_winner);
+        String highestProbableResultName = null;
+         if( highest_probable_result == probability_home_team_winner){
+             highestProbableResultName = "HOME_TEAM_WIN";
+         } else if(highest_probable_result == probability_draw) {
+             highestProbableResultName = "DRAW";
+         } else if(highest_probable_result == probability_away_team_winner) {
+             highestProbableResultName = "AWAY_TEAM_WIN";
+         }  return highestProbableResultName;}
+
+
+    @Override
+    public String toString() {
+        return "Start date: " + start_date.replace("T", " ")
+                .substring(0,19) + "," + "\n"
+        + Arrays.toString(competitors)
+                .replace("[", "")
+                .replace(",", " vs.")
+                .replace("]",",") + "\n"
+                + venue + "\n"
+                + "Highest probable result : "
+                + HighestProbableResultName() + " (" + highest_probable_result + ")" + "\n"
+                ;
+
+    }
+
 
 
     }
-}
+
