@@ -1,8 +1,10 @@
+package pl.graczyk.matchresults;
+
 public class Competitor {
   private  String id;
   private  String name;
   private  String country;
-  private  String countryCode;
+  private  String country_code;
   private  String abbreviation;
   private  String qualifier;
   private  String gender;
@@ -14,7 +16,7 @@ public class Competitor {
         this.id = id;
         this.name = name;
         this.country = country;
-        this.countryCode = countryCode;
+        this.country_code = countryCode;
         this.abbreviation = abbreviation;
         this.qualifier = qualifier;
         this.gender = gender;
@@ -44,12 +46,12 @@ public class Competitor {
         this.country = country;
     }
 
-    public String getCountryCode() {
-        return countryCode;
+    public String getCountry_code() {
+        return country_code;
     }
 
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
+    public void setCountry_code(String country_code) {
+        this.country_code = country_code;
     }
 
     public String getAbbreviation() {
