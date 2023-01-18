@@ -1,10 +1,10 @@
 package pl.graczyk.matchresults;
 
-import pl.graczyk.matchresults.Competitor;
-
 import java.util.Arrays;
-
-public class Event {
+import java.util.Comparator;
+import java.util.Objects;
+import java.lang.Comparable;
+public class Event implements Comparable<Event> {
  private String sport_event_id;
  private String start_date;
  private String sport_name;
@@ -18,6 +18,11 @@ public class Event {
  private  double probability_away_team_winner;
 
   double highest_probable_result;
+
+
+    public double getHighest_probable_result() {
+        return highest_probable_result;
+    }
 
 
     public String getSport_event_id() {
@@ -129,9 +134,24 @@ public class Event {
     }
 
 
-public double HighestProbableResult(double probability_home_team_winner,
-                                    double probability_draw,
-                                    double probability_away_team_winner) {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event event = (Event) o;
+        return Double.compare(event.probability_home_team_winner, probability_home_team_winner) == 0 && Double.compare(event.probability_draw, probability_draw) == 0 && Double.compare(event.probability_away_team_winner, probability_away_team_winner) == 0 && Double.compare(event.highest_probable_result, highest_probable_result) == 0 && Objects.equals(sport_event_id, event.sport_event_id) && Objects.equals(start_date, event.start_date) && Objects.equals(sport_name, event.sport_name) && Objects.equals(competition_name, event.competition_name) && Objects.equals(competition_id, event.competition_id) && Objects.equals(season_name, event.season_name) && Arrays.equals(competitors, event.competitors) && Objects.equals(venue, event.venue);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(sport_event_id, start_date, sport_name, competition_name, competition_id, season_name, venue, probability_home_team_winner, probability_draw, probability_away_team_winner, highest_probable_result);
+        result = 31 * result + Arrays.hashCode(competitors);
+        return result;
+    }
+
+    public double HighestProbableResult(double probability_home_team_winner,
+                                        double probability_draw,
+                                        double probability_away_team_winner) {
         double highest_probable_result = Math.max(probability_draw,
             Math.max(probability_away_team_winner, probability_home_team_winner));
 
@@ -161,11 +181,20 @@ public double HighestProbableResult(double probability_home_team_winner,
                 + venue + "\n"
                 + "Highest probable result : "
                 + HighestProbableResultName() + " (" + highest_probable_result + ")" + "\n"
-                ;
+                + highest_probable_result + "\n";
 
     }
 
-
-
+    @Override
+    public int compareTo(Event o) {
+        if(highest_probable_result < o.highest_probable_result)
+            return 1;
+        else if(highest_probable_result > o.highest_probable_result)
+            return -1;
+        return 0;
     }
+}
+
+
+
 

@@ -10,32 +10,42 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @SpringBootApplication
 public class MatchResultsApplication {
 
     public static void main(String[] args) throws IOException {
-      //  SpringApplication.run(MatchResultsApplication.class, args);
 
 
-        for(int i = 0; i < events().size(); i++) {
-            System.out.println(events().get(i).toString());
+
+      List<Event> events = eventList();
+      //  Collections.sort(events);
+      Object[] eventarr = events.toArray();
+        Arrays.sort(eventarr);
+        for (int i = 0; i< eventarr.length; i++){
+            System.out.println(eventarr[i]);
         }
 
 
-    }
+
+        }
 
 
-    private static List<Event> events() throws FileNotFoundException {
+
+
+
+    private static List<Event> eventList() throws FileNotFoundException {
 
         JsonParser parser = new JsonParser();
         Object obj =parser.parse(new FileReader(
                 "C:\\Users\\Natala\\IdeaProjects\\matchResults\\src\\main\\resources\\data\\BE_data.json")) ;
         JsonObject jsonObject = (JsonObject) obj;
-        JsonArray eventList = (JsonArray) jsonObject.get("Events");
-        List<Event> events = new Gson().fromJson(eventList, new TypeToken<List<Event>>(){}.getType());
-        return events;
+        JsonArray eventData = (JsonArray) jsonObject.get("Events");
+        List<Event> eventList = new Gson().fromJson(eventData, new TypeToken<List<Event>>(){}.getType());
+        return eventList;
     }
 
 
