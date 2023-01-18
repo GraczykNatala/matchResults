@@ -77,4 +77,9 @@ public class Venue {
        public void setCountry_code(String country_code) {
               this.country_code = country_code;
        }
+
+    @Override
+    public String toString() {
+        return "Venue: " +  name + ",";
+    }
 }

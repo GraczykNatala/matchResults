@@ -1,6 +1,5 @@
 package pl.graczyk.matchresults;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -28,15 +27,12 @@ eventList();
 
     private static JsonArray eventList() throws FileNotFoundException {
 
-        Gson gson = new Gson();
-
         JsonParser parser = new JsonParser();
         Object obj =parser.parse(new FileReader(
                 "C:\\Users\\Natala\\IdeaProjects\\matchResults\\src\\main\\resources\\data\\BE_data.json")) ;
         JsonObject jsonObject = (JsonObject) obj;
-        JsonArray events = (JsonArray) jsonObject.get("Events");
 
-        return events;
+        return (JsonArray) jsonObject.get("Events");
     }
 
 
