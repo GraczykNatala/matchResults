@@ -1,4 +1,4 @@
-# TrainingAssistant 
+# match results
 Project in progress
 
 ## Table of contents
