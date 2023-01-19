@@ -1,5 +1,4 @@
 # match results
-Project in progress
 
 ## Table of contents
 * [Technologies](#technologies)
