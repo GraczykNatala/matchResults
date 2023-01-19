@@ -1,4 +1,4 @@
-package pl.graczyk.matchresults;
+package pl.graczyk.matchresults.POJO;
 
 import java.util.Arrays;
 import java.util.Objects;

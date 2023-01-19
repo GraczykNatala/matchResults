@@ -1,4 +1,4 @@
-package pl.graczyk.matchresults;
+package pl.graczyk.matchresults.POJO;
 
 public class Competitor {
   private  String id;

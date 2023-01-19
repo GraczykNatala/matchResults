@@ -1,9 +1,11 @@
-package pl.graczyk.matchresults;
+package pl.graczyk.matchresults.service;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+import pl.graczyk.matchresults.POJO.Event;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;

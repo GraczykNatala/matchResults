@@ -1,4 +1,6 @@
 package pl.graczyk.matchresults;
+import pl.graczyk.matchresults.service.MatchResultsService;
+
 import java.io.IOException;
 import java.util.Scanner;
 

@@ -1,7 +1,10 @@
-package pl.graczyk.matchresults;
+package pl.graczyk.matchresults.service;
+
+import pl.graczyk.matchresults.POJO.Event;
 
 import java.io.FileNotFoundException;
 import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class MatchResultsService {
@@ -18,9 +21,11 @@ public class MatchResultsService {
 
         try {
             showList(amountOfResults, events);
-        } catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e)
+        {
             amountOfResults = events.size();
         }
+
     }
 
 
