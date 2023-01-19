@@ -1,5 +1,7 @@
 package pl.graczyk.matchresults.POJO;
 
+import java.util.Objects;
+
 public class Competitor {
   private  String id;
   private  String name;
@@ -81,6 +83,19 @@ public class Competitor {
     @Override
     public String toString() {
         return name + "(" + country + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Competitor that = (Competitor) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(country, that.country) && Objects.equals(country_code, that.country_code) && Objects.equals(abbreviation, that.abbreviation) && Objects.equals(qualifier, that.qualifier) && Objects.equals(gender, that.gender);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, country, country_code, abbreviation, qualifier, gender);
     }
 }
 

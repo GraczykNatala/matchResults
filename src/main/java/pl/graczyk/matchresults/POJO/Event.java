@@ -186,6 +186,11 @@ public class Event implements Comparable<Event> {
                 + highest_probable_result + "\n";
 
     }
+    public Competitor competitors() {
+        return
+                Arrays.asList(competitors).get(0);
+    }
+
 
     @Override
     public int compareTo(Event o) {

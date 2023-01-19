@@ -18,7 +18,6 @@ public class MatchResultsService {
         events.stream().forEach(e -> e.setHighest_probable_result(Event.HighestProbableResult(e.getProbability_home_team_winner(),
                 e.getProbability_draw(),e.getProbability_away_team_winner())));
         Collections.sort(events);
-
         try {
             showList(amountOfResults, events);
         } catch (IndexOutOfBoundsException e)
