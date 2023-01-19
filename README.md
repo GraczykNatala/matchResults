@@ -14,6 +14,8 @@
 * Java version 17
 * Gson library
 * Maven
+* Spring boot
+* Spring web
 
 
 
