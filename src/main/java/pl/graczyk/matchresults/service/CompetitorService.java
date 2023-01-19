@@ -10,7 +10,7 @@ public class CompetitorService {
     public CompetitorService() {
     }
 
-    public void ListOfCompetitors() throws FileNotFoundException {
+    public Set ListOfCompetitors() throws FileNotFoundException {
         List<Event> events = dataService.eventList();
 
         Set<String> competitors = new TreeSet<>();
@@ -21,7 +21,8 @@ public class CompetitorService {
                         .getName());
             }
         }
-        showCompetitors(competitors);
+       // showCompetitors(competitors);
+    return competitors;
     }
     private void showCompetitors(Set competitors) {
     for(Object team : competitors) {
