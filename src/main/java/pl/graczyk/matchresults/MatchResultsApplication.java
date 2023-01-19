@@ -8,20 +8,25 @@ import java.util.Scanner;
 public class MatchResultsApplication {
 
     public static void main(String[] args) throws IOException {
-
-
-
         Scanner scanner = new Scanner(System.in);
 
-        int amountOfResults = scanner.nextInt();
+        System.out.println("What you want to do?");
+        System.out.println("List of competitors - 1");
+        System.out.println("List of most probable Match results - 2");
+        int usersChoice = scanner.nextInt();
 
-        MatchResultsService matchResutsService = new MatchResultsService();
-        matchResutsService.ListOfMatchResults(amountOfResults);
 
+        if (usersChoice == 1){
+            CompetitorService competitorService = new CompetitorService();
+            competitorService.ListOfCompetitors();
+        } else if (usersChoice == 2){
+            System.out.println("Enter the amount of results");
+                int amountOfResults = scanner.nextInt();
 
+                MatchResultsService matchResutsService = new MatchResultsService();
+                matchResutsService.ListOfMatchResults(amountOfResults);
 
-        CompetitorService competitorService = new CompetitorService();
-        competitorService.ListOfCompetitors();
+            }
 
         }
 
