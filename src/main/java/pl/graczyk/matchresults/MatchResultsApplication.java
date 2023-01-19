@@ -1,7 +1,6 @@
 package pl.graczyk.matchresults;
 import pl.graczyk.matchresults.service.CompetitorService;
 import pl.graczyk.matchresults.service.MatchResultsService;
-
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -14,10 +13,10 @@ public class MatchResultsApplication {
 
         Scanner scanner = new Scanner(System.in);
 
-        //int amountOfResults = scanner.nextInt();
+        int amountOfResults = scanner.nextInt();
 
         MatchResultsService matchResutsService = new MatchResultsService();
-       // matchResutsService.ListOfMatchResults(amountOfResults);
+        matchResutsService.ListOfMatchResults(amountOfResults);
 
 
 

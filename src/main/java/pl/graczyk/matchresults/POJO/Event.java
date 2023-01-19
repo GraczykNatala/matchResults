@@ -17,16 +17,15 @@ public class Event implements Comparable<Event> {
 
     double highest_probable_result;
 
-    public Event(Event event) {
-    }
-
 
     public double getHighest_probable_result() {
         return highest_probable_result;
     }
 
     public void setHighest_probable_result(double highest_probable_result) {
-        this.highest_probable_result = HighestProbableResult(probability_home_team_winner,probability_draw,probability_away_team_winner);
+        this.highest_probable_result = HighestProbableResult(probability_home_team_winner,
+                probability_draw,
+                probability_away_team_winner);
     }
 
     public String getSport_event_id() {
@@ -143,12 +142,23 @@ public class Event implements Comparable<Event> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Event event = (Event) o;
-        return Double.compare(event.probability_home_team_winner, probability_home_team_winner) == 0 && Double.compare(event.probability_draw, probability_draw) == 0 && Double.compare(event.probability_away_team_winner, probability_away_team_winner) == 0 && Double.compare(event.highest_probable_result, highest_probable_result) == 0 && Objects.equals(sport_event_id, event.sport_event_id) && Objects.equals(start_date, event.start_date) && Objects.equals(sport_name, event.sport_name) && Objects.equals(competition_name, event.competition_name) && Objects.equals(competition_id, event.competition_id) && Objects.equals(season_name, event.season_name) && Arrays.equals(competitors, event.competitors) && Objects.equals(venue, event.venue);
+        return Double.compare(event.probability_home_team_winner, probability_home_team_winner)
+                == 0 && Double.compare(event.probability_draw, probability_draw)
+                == 0 && Double.compare(event.probability_away_team_winner, probability_away_team_winner)
+                == 0 && Double.compare(event.highest_probable_result, highest_probable_result)
+                == 0 && Objects.equals(sport_event_id, event.sport_event_id)
+                && Objects.equals(start_date, event.start_date) && Objects.equals(sport_name, event.sport_name)
+                && Objects.equals(competition_name, event.competition_name) && Objects.equals(competition_id, event.competition_id)
+                && Objects.equals(season_name, event.season_name) && Arrays.equals(competitors, event.competitors)
+                && Objects.equals(venue, event.venue);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(sport_event_id, start_date, sport_name, competition_name, competition_id, season_name, venue, probability_home_team_winner, probability_draw, probability_away_team_winner, highest_probable_result);
+        int result = Objects.hash(sport_event_id, start_date, sport_name,
+                competition_name, competition_id, season_name,
+                venue, probability_home_team_winner, probability_draw,
+                probability_away_team_winner, highest_probable_result);
         result = 31 * result + Arrays.hashCode(competitors);
         return result;
     }
@@ -158,10 +168,13 @@ public class Event implements Comparable<Event> {
                                                double probability_away_team_winner) {
 
        return Math.max(probability_draw,
-                Math.max(probability_away_team_winner, probability_home_team_winner)); }
+                Math.max(probability_away_team_winner,
+                        probability_home_team_winner)); }
 
     public String HighestProbableResultName() {
-        highest_probable_result = HighestProbableResult(probability_home_team_winner,probability_draw,probability_away_team_winner);
+        highest_probable_result = HighestProbableResult(probability_home_team_winner,
+                probability_draw,
+                probability_away_team_winner);
         String highestProbableResultName = null;
         if( highest_probable_result == probability_home_team_winner){
             highestProbableResultName = "HOME_TEAM_WIN";
@@ -174,16 +187,16 @@ public class Event implements Comparable<Event> {
 
     @Override
     public String toString() {
-        return "Start date: " + start_date.replace("T", " ")
-                .substring(0,19) + "," + "\n"
+        return "Start date: " + start_date
+                .replace("T", " ")
+                .substring(0,19) + "," + System.lineSeparator()
                 + Arrays.toString(competitors)
                 .replace("[", "")
                 .replace(",", " vs.")
-                .replace("]",",") + "\n"
-                + venue + "\n"
+                .replace("]",",") + System.lineSeparator()
+                + venue + System.lineSeparator()
                 + "Highest probable result : "
-                + HighestProbableResultName() + " (" + highest_probable_result + ")" + "\n"
-                + highest_probable_result + "\n";
+                + HighestProbableResultName() + " (" + highest_probable_result + ")" + System.lineSeparator();
 
     }
     public Competitor competitors() {
