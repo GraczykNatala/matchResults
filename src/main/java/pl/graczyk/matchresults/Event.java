@@ -1,29 +1,33 @@
 package pl.graczyk.matchresults;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Objects;
-import java.lang.Comparable;
 public class Event implements Comparable<Event> {
- private String sport_event_id;
- private String start_date;
- private String sport_name;
-  private String competition_name;
- private String competition_id;
- private String season_name;
- private Competitor[] competitors;
- private Venue venue;
- private  double probability_home_team_winner;
- private double probability_draw;
- private  double probability_away_team_winner;
+    private String sport_event_id;
+    private String start_date;
+    private String sport_name;
+    private String competition_name;
+    private String competition_id;
+    private String season_name;
+    private Competitor[] competitors;
+    private Venue venue;
+    private  double probability_home_team_winner;
+    private double probability_draw;
+    private  double probability_away_team_winner;
 
-  double highest_probable_result;
+    double highest_probable_result;
+
+    public Event(Event event) {
+    }
 
 
     public double getHighest_probable_result() {
         return highest_probable_result;
     }
 
+    public void setHighest_probable_result(double highest_probable_result) {
+        this.highest_probable_result = HighestProbableResult(probability_home_team_winner,probability_draw,probability_away_team_winner);
+    }
 
     public String getSport_event_id() {
         return sport_event_id;
@@ -149,32 +153,30 @@ public class Event implements Comparable<Event> {
         return result;
     }
 
-    public double HighestProbableResult(double probability_home_team_winner,
-                                        double probability_draw,
-                                        double probability_away_team_winner) {
-        double highest_probable_result = Math.max(probability_draw,
-            Math.max(probability_away_team_winner, probability_home_team_winner));
+    public static double HighestProbableResult(double probability_home_team_winner,
+                                               double probability_draw,
+                                               double probability_away_team_winner) {
 
-
-        return highest_probable_result; }
+       return Math.max(probability_draw,
+                Math.max(probability_away_team_winner, probability_home_team_winner)); }
 
     public String HighestProbableResultName() {
         highest_probable_result = HighestProbableResult(probability_home_team_winner,probability_draw,probability_away_team_winner);
         String highestProbableResultName = null;
-         if( highest_probable_result == probability_home_team_winner){
-             highestProbableResultName = "HOME_TEAM_WIN";
-         } else if(highest_probable_result == probability_draw) {
-             highestProbableResultName = "DRAW";
-         } else if(highest_probable_result == probability_away_team_winner) {
-             highestProbableResultName = "AWAY_TEAM_WIN";
-         }  return highestProbableResultName;}
+        if( highest_probable_result == probability_home_team_winner){
+            highestProbableResultName = "HOME_TEAM_WIN";
+        } else if(highest_probable_result == probability_draw) {
+            highestProbableResultName = "DRAW";
+        } else if(highest_probable_result == probability_away_team_winner) {
+            highestProbableResultName = "AWAY_TEAM_WIN";
+        }  return highestProbableResultName;}
 
 
     @Override
     public String toString() {
         return "Start date: " + start_date.replace("T", " ")
                 .substring(0,19) + "," + "\n"
-        + Arrays.toString(competitors)
+                + Arrays.toString(competitors)
                 .replace("[", "")
                 .replace(",", " vs.")
                 .replace("]",",") + "\n"
@@ -193,8 +195,7 @@ public class Event implements Comparable<Event> {
             return -1;
         return 0;
     }
+
 }
-
-
 
 
