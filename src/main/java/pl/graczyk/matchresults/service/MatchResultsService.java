@@ -10,7 +10,7 @@ public class MatchResultsService {
 
     public MatchResultsService() {
     }
-    public void ListOfMatchResults(int amountOfResults) throws FileNotFoundException {
+    public List ListOfMatchResults(int amountOfResults) throws FileNotFoundException {
         List<Event> events = dataService.eventList();
         events.forEach(e -> e.setHighest_probable_result(Event.HighestProbableResult(
                 e.getProbability_home_team_winner(),
@@ -19,12 +19,13 @@ public class MatchResultsService {
 
         Collections.sort(events);
         try {
-            showList(amountOfResults, events);
-        } catch (IndexOutOfBoundsException e)
+           showList(amountOfResults, events);
+       } catch (IndexOutOfBoundsException e)
         {
             amountOfResults = events.size();
         }
 
+        return events;
     }
 
 

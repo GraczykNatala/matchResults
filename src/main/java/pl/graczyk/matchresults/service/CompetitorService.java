@@ -21,7 +21,7 @@ public class CompetitorService {
                         .getName());
             }
         }
-       // showCompetitors(competitors);
+        showCompetitors(competitors);
     return competitors;
     }
     private void showCompetitors(Set competitors) {
