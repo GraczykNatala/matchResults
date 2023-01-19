@@ -23,8 +23,8 @@ public class MatchResultsApplication {
             System.out.println("Enter the amount of results");
                 int amountOfResults = scanner.nextInt();
 
-                MatchResultsService matchResutsService = new MatchResultsService();
-                matchResutsService.ListOfMatchResults(amountOfResults);
+                MatchResultsService matchResultsService = new MatchResultsService();
+                matchResultsService.ListOfMatchResults(amountOfResults);
 
             }
 

@@ -14,12 +14,12 @@ public class CompetitorService {
         List<Event> events = dataService.eventList();
 
         Set<String> competitors = new TreeSet<>();
-        for(int event = 0; event <events.size(); event++) {
-            for(int team = 0; team<=1; team++){
-                competitors.add(events.get(event).
+        for (Event value : events) {
+            for (int team = 0; team <= 1; team++) {
+                competitors.add(value.
                         getCompetitors()[team]
                         .getName());
-        }
+            }
         }
         showCompetitors(competitors);
     }

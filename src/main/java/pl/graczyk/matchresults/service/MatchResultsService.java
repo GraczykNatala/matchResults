@@ -1,10 +1,7 @@
 package pl.graczyk.matchresults.service;
-
 import pl.graczyk.matchresults.POJO.Event;
-
 import java.io.FileNotFoundException;
 import java.util.Collections;
-import java.util.InputMismatchException;
 import java.util.List;
 
 public class MatchResultsService {
@@ -15,7 +12,7 @@ public class MatchResultsService {
     }
     public void ListOfMatchResults(int amountOfResults) throws FileNotFoundException {
         List<Event> events = dataService.eventList();
-        events.stream().forEach(e -> e.setHighest_probable_result(Event.HighestProbableResult(
+        events.forEach(e -> e.setHighest_probable_result(Event.HighestProbableResult(
                 e.getProbability_home_team_winner(),
                 e.getProbability_draw(),
                 e.getProbability_away_team_winner())));
